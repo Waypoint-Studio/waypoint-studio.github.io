@@ -76,6 +76,10 @@ export const Layout = (): ReactElement => {
       <div className="topbar">
         <span className="brand__name">Reparo</span>
         <span className="topbar__badge">Demo</span>
+        <button type="button" className="topbar__reset" onClick={resetDemo} disabled={resetting} aria-label="Reiniciar datos de la demo">
+          <Icon name="refresh" size={16} />
+          {resetting ? 'Reiniciando…' : 'Reiniciar'}
+        </button>
       </div>
       <main className="main">
         <Outlet />

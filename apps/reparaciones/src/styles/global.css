@@ -157,6 +157,25 @@ textarea {
   padding: 1px 8px;
 }
 
+.topbar__reset {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgb(255 255 255 / 25%);
+  background: transparent;
+  color: #fff;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.topbar__reset:disabled {
+  opacity: 0.6;
+}
+
 .brand {
   display: flex;
   align-items: center;
