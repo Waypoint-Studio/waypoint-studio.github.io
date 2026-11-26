@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Waypoint Studio | Desarrollo de software a la medida</title>
+    <meta
+      name="description"
+      content="Estudio de desarrollo de software en Colombia. Plataformas SaaS, APIs e infraestructura en la nube para empresas que necesitan software confiable."
+    />
+    <meta name="theme-color" content="#E3ECEF" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Waypoint Studio" />
+    <meta
+      property="og:description"
+      content="Llevamos tu producto de la idea a producción, un punto a la vez."
+    />
+    <meta property="og:url" content="https://waypoint-studio.github.io/" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap"
+    />
+    <style>
+      :root {
+        --sea: #e3ecef;
+        --shoal: #d3e2e8;
+        --foam: #f4f8f9;
+        --ink: #10263b;
+        --ink-soft: #3d5468;
+        --contour: #8fabbd;
+        --course: #b5177a;
+        --course-strong: #96105f;
+        --serif: 'Spectral', Georgia, serif;
+        --sans: 'Schibsted Grotesk', system-ui, sans-serif;
+        --measure: 36rem;
+        --gutter: clamp(1.25rem, 4vw, 3rem);
+        --space: clamp(4.5rem, 10vw, 8rem);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        background: var(--sea);
+        color: var(--ink);
+        font: 400 1.0625rem/1.6 var(--sans);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: var(--serif);
+        font-weight: 400;
+        line-height: 1.1;
+        margin: 0;
+        text-wrap: balance;
+      }
+
+      p {
+        margin: 0;
+        text-wrap: pretty;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--course);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        width: min(100% - 2 * var(--gutter), 72rem);
+        margin-inline: auto;
+      }
+
+      .skip {
+        position: absolute;
+        left: -999px;
+        top: 0.5rem;
+        background: var(--ink);
+        color: var(--foam);
+        padding: 0.5rem 0.75rem;
+        z-index: 10;
+      }
+
+      .skip:focus {
+        left: 0.5rem;
+      }
+
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding-block: 1.5rem;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.625rem;
+        font-weight: 600;
+        font-size: 1.0625rem;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+      }
+
+      .brand svg {
+        width: 1.75rem;
+        height: 1.75rem;
+      }
+
+      .site-nav ul {
+        display: flex;
+        gap: clamp(1rem, 3vw, 2rem);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .site-nav a {
+        text-decoration: none;
+        color: var(--ink-soft);
+        font-weight: 500;
+        font-size: 0.9375rem;
+      }
+
+      .site-nav a:hover {
+        color: var(--ink);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+        align-items: center;
+        gap: clamp(2rem, 5vw, 4rem);
+        padding-block: clamp(2.5rem, 7vw, 5.5rem) var(--space);
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 5.6vw, 4.5rem);
+        letter-spacing: -0.02em;
+        max-width: 13ch;
+      }
+
+      .hero-lede {
+        margin-top: 1.75rem;
+        max-width: var(--measure);
+        font-size: 1.1875rem;
+        color: var(--ink-soft);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem 1.75rem;
+        margin-top: 2.5rem;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 0.875rem 1.375rem;
+        background: var(--course);
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 999px;
+        transition: background-color 0.15s ease;
+      }
+
+      .button:hover {
+        background: var(--course-strong);
+      }
+
+      .text-link {
+        font-weight: 500;
+        text-decoration-color: var(--contour);
+        text-underline-offset: 0.3em;
+      }
+
+      .text-link:hover {
+        text-decoration-color: var(--ink);
+      }
+
+      .chart {
+        width: 100%;
+        height: auto;
+        display: block;
+        -webkit-mask-image: radial-gradient(ellipse 80% 78% at 52% 50%, #000 72%, transparent 100%);
+        mask-image: radial-gradient(ellipse 80% 78% at 52% 50%, #000 72%, transparent 100%);
+      }
+
+      .chart .contour {
+        fill: none;
+        stroke: var(--contour);
+        stroke-width: 1;
+        opacity: 0.55;
+      }
+
+      .chart .shoal {
+        fill: var(--shoal);
+      }
+
+      .chart .route {
+        fill: none;
+        stroke: var(--course);
+        stroke-width: 2.25;
+        stroke-linecap: round;
+        stroke-dasharray: 9 7;
+      }
+
+      .chart .wp-ring {
+        fill: var(--sea);
+        stroke: var(--course);
+        stroke-width: 2;
+      }
+
+      .chart .wp-dot {
+        fill: var(--course);
+      }
+
+      .chart .label {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: 17px;
+        fill: var(--ink-soft);
+      }
+
+      .chart .label-strong {
+        font-family: var(--sans);
+        font-weight: 600;
+        font-size: 16px;
+        fill: var(--ink);
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .chart .route-mask {
+          stroke-dasharray: 1;
+          stroke-dashoffset: 1;
+          animation: plot 2.4s cubic-bezier(0.65, 0, 0.35, 1) 0.3s forwards;
+        }
+
+        .chart .wp {
+          opacity: 0;
+          animation: appear 0.4s ease forwards;
+        }
+
+        .chart .wp-1 {
+          animation-delay: 0.3s;
+        }
+        .chart .wp-2 {
+          animation-delay: 1s;
+        }
+        .chart .wp-3 {
+          animation-delay: 1.75s;
+        }
+        .chart .wp-4 {
+          animation-delay: 2.55s;
+        }
+      }
+
+      @keyframes plot {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      @keyframes appear {
+        to {
+          opacity: 1;
+        }
+      }
+
+      .section {
+        padding-block: var(--space);
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+        gap: 1.5rem clamp(2rem, 5vw, 4rem);
+        align-items: end;
+        margin-bottom: clamp(2.5rem, 6vw, 4rem);
+      }
+
+      .section-head h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        letter-spacing: -0.015em;
+      }
+
+      .section-head p {
+        max-width: var(--measure);
+        color: var(--ink-soft);
+      }
+
+      .services {
+        background: var(--foam);
+      }
+
+      .service-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 clamp(2rem, 5vw, 4rem);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .service {
+        padding-block: 1.75rem 2.25rem;
+        border-top: 1px solid var(--contour);
+      }
+
+      .service h3 {
+        font-size: 1.625rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .service p {
+        color: var(--ink-soft);
+        max-width: 32rem;
+      }
+
+      .service .tools {
+        margin-top: 1rem;
+        font-size: 0.9375rem;
+        color: var(--ink);
+      }
+
+      .route-steps {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: step;
+      }
+
+      .step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 1.0625rem;
+        left: 2.25rem;
+        width: calc(100% + 2rem - 2.25rem);
+        border-top: 2px dashed var(--course);
+      }
+
+      .step {
+        position: relative;
+        counter-increment: step;
+      }
+
+      .step::before {
+        content: counter(step);
+        display: grid;
+        place-items: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        margin-bottom: 1.5rem;
+        border-radius: 50%;
+        background: var(--sea);
+        border: 2px solid var(--course);
+        color: var(--course);
+        font-weight: 600;
+        font-size: 0.9375rem;
+        position: relative;
+      }
+
+      .step h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.625rem;
+      }
+
+      .step p {
+        color: var(--ink-soft);
+      }
+
+      .stack {
+        margin-top: clamp(3.5rem, 8vw, 5.5rem);
+        border-top: 1px solid var(--contour);
+        padding-block: 2.5rem;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+        gap: 1rem 2rem;
+        align-items: baseline;
+      }
+
+      .stack h2 {
+        font-size: 1.5rem;
+      }
+
+      .stack ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.75rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-weight: 500;
+      }
+
+      .contact {
+        background: var(--ink);
+        color: var(--foam);
+      }
+
+      .contact h2 {
+        font-size: clamp(2.25rem, 5vw, 3.75rem);
+        letter-spacing: -0.02em;
+        max-width: 16ch;
+      }
+
+      .contact p {
+        margin-top: 1.25rem;
+        max-width: var(--measure);
+        color: #b9cad5;
+        font-size: 1.125rem;
+      }
+
+      .mail {
+        display: inline-block;
+        margin-top: 2.5rem;
+        font-family: var(--serif);
+        font-size: clamp(1.5rem, 4.2vw, 2.75rem);
+        text-decoration: underline;
+        text-decoration-color: #e2459d;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 0.2em;
+        overflow-wrap: anywhere;
+      }
+
+      .mail:hover {
+        text-decoration-color: var(--foam);
+      }
+
+      .contact :focus-visible {
+        outline-color: #e2459d;
+      }
+
+      .site-footer {
+        background: var(--ink);
+        color: #8fa5b4;
+        font-size: 0.9375rem;
+        padding-block: 0 2.5rem;
+      }
+
+      .site-footer .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0.5rem 2rem;
+        border-top: 1px solid #2a4258;
+        padding-top: 1.5rem;
+      }
+
+      @media (max-width: 860px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-chart {
+          order: -1;
+          max-width: 34rem;
+        }
+
+        .section-head,
+        .stack {
+          grid-template-columns: 1fr;
+        }
+
+        .route-steps {
+          grid-template-columns: 1fr;
+          gap: 2.25rem;
+        }
+
+        .step:not(:last-child)::after {
+          top: 2.25rem;
+          bottom: -2.25rem;
+          left: 1.0625rem;
+          width: 0;
+          border-top: 0;
+          border-left: 2px dashed var(--course);
+        }
+
+        .step {
+          padding-left: 3.5rem;
+        }
+
+        .step::before {
+          position: absolute;
+          left: 0;
+          top: 0;
+          margin: 0;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .service-list {
+          grid-template-columns: 1fr;
+        }
+
+        .site-nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+
+    <header class="wrap site-header">
+      <a class="brand" href="#" aria-label="Waypoint Studio, inicio">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="12" fill="none" stroke="#10263B" stroke-width="2.25" />
+          <circle cx="16" cy="16" r="3.75" fill="#B5177A" />
+        </svg>
+        Waypoint Studio
+      </a>
+      <nav class="site-nav" aria-label="Principal">
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proceso">Cómo trabajamos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <section class="wrap hero" aria-labelledby="hero-title">
+        <div>
+          <h1 id="hero-title">Llevamos tu producto de la idea a producción.</h1>
+          <p class="hero-lede">
+            Waypoint Studio es un estudio de desarrollo de software en Colombia. Diseñamos y
+            construimos plataformas SaaS, APIs e infraestructura en la nube para empresas que
+            necesitan software confiable, rápido y fácil de mantener.
+          </p>
+          <div class="actions">
+            <a
+              class="button"
+              href="mailto:asespinosa0@gmail.com?subject=Proyecto%20con%20Waypoint%20Studio"
+              >Escribir al estudio</a
+            >
+            <a class="text-link" href="#proceso">Ver cómo trabajamos</a>
+          </div>
+        </div>
+
+        <div class="hero-chart">
+          <svg
+            class="chart"
+            viewBox="0 0 560 480"
+            role="img"
+            aria-label="Carta de navegación con una ruta que pasa por cuatro puntos: idea, diseño, construcción y producción"
+          >
+            <defs>
+              <mask id="route-reveal">
+                <path
+                  class="route-mask"
+                  pathLength="1"
+                  d="M70 400 C 140 360, 150 300, 190 270 S 300 250, 330 200 S 380 110, 480 90"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="8"
+                />
+              </mask>
+            </defs>
+
+            <path
+              class="shoal"
+              d="M300 470 C 330 400, 420 380, 470 330 S 560 250, 560 230 L 560 480 L 290 480 Z"
+            />
+            <g aria-hidden="true">
+              <path class="contour" d="M280 480 C 320 400, 410 375, 460 325 S 545 240, 560 220" />
+              <path class="contour" d="M240 480 C 290 380, 390 350, 440 300 S 520 200, 560 180" />
+              <path class="contour" d="M190 480 C 250 370, 360 320, 410 270 S 490 160, 560 135" />
+              <path
+                class="contour"
+                d="M0 150 C 60 140, 110 100, 150 60 S 220 0, 240 0"
+              />
+              <path class="contour" d="M0 195 C 80 180, 140 140, 185 95 S 260 20, 300 0" />
+              <path class="contour" d="M0 245 C 100 225, 170 180, 220 130 S 300 40, 355 0" />
+              <path
+                class="contour"
+                d="M60 470 C 40 440, 20 420, 0 410"
+              />
+              <path class="contour" d="M120 480 C 90 440, 50 400, 0 380" />
+            </g>
+
+            <path
+              class="route"
+              mask="url(#route-reveal)"
+              d="M70 400 C 140 360, 150 300, 190 270 S 300 250, 330 200 S 380 110, 480 90"
+            />
+
+            <g class="wp wp-1">
+              <circle class="wp-ring" cx="70" cy="400" r="11" />
+              <circle class="wp-dot" cx="70" cy="400" r="4" />
+              <text class="label-strong" x="92" y="425">Idea</text>
+            </g>
+            <g class="wp wp-2">
+              <circle class="wp-ring" cx="190" cy="270" r="11" />
+              <circle class="wp-dot" cx="190" cy="270" r="4" />
+              <text class="label-strong" x="120" y="248">Diseño</text>
+            </g>
+            <g class="wp wp-3">
+              <circle class="wp-ring" cx="330" cy="200" r="11" />
+              <circle class="wp-dot" cx="330" cy="200" r="4" />
+              <text class="label-strong" x="350" y="228">Construcción</text>
+            </g>
+            <g class="wp wp-4">
+              <circle class="wp-ring" cx="480" cy="90" r="11" />
+              <circle class="wp-dot" cx="480" cy="90" r="4" />
+              <text class="label-strong" x="400" y="62">Producción</text>
+            </g>
+
+            <text class="label" x="28" y="300" aria-hidden="true">aguas conocidas</text>
+            <text class="label" x="388" y="430" aria-hidden="true">tu próximo producto</text>
+          </svg>
+        </div>
+      </section>
+
+      <section class="section services" id="servicios" aria-labelledby="servicios-title">
+        <div class="wrap">
+          <div class="section-head">
+            <h2 id="servicios-title">Qué construimos</h2>
+            <p>
+              Nos encargamos del producto completo: desde la base de datos hasta el servidor donde
+              corre, con código que tu equipo puede entender y seguir haciendo crecer.
+            </p>
+          </div>
+          <ul class="service-list">
+            <li class="service">
+              <h3>Plataformas SaaS a la medida</h3>
+              <p>
+                Aplicaciones web para varios clientes o sedes, con cuentas de usuario, roles,
+                pagos y paneles de administración, preparadas para crecer contigo.
+              </p>
+            </li>
+            <li class="service">
+              <h3>APIs y backends</h3>
+              <p>
+                Servicios rápidos y probados que conectan tus aplicaciones, integran sistemas
+                externos y procesan tus datos de forma segura.
+              </p>
+              <p class="tools">TypeScript, NestJS, Fastify, PostgreSQL y Redis.</p>
+            </li>
+            <li class="service">
+              <h3>Infraestructura y despliegue</h3>
+              <p>
+                Servidores en la nube, contenedores, despliegues automáticos y copias de seguridad
+                diarias para que tu producto esté siempre en línea.
+              </p>
+              <p class="tools">Docker, DigitalOcean y GitHub Actions.</p>
+            </li>
+            <li class="service">
+              <h3>Mantenimiento y evolución</h3>
+              <p>
+                Tomamos sistemas existentes para actualizarlos, corregir problemas y agregar nuevas
+                funcionalidades sin detener tu operación.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="proceso" aria-labelledby="proceso-title">
+        <div class="wrap">
+          <div class="section-head">
+            <h2 id="proceso-title">Cómo trabajamos</h2>
+            <p>
+              Cada proyecto sigue la misma ruta, con puntos de control claros. Sabes en qué etapa
+              estamos y qué viene después.
+            </p>
+          </div>
+          <ol class="route-steps">
+            <li class="step">
+              <h3>Descubrimiento</h3>
+              <p>
+                Entendemos el problema, a tus usuarios y lo que debe existir en la primera versión.
+              </p>
+            </li>
+            <li class="step">
+              <h3>Diseño técnico</h3>
+              <p>Definimos la arquitectura, el alcance y un plan de entregas con fechas claras.</p>
+            </li>
+            <li class="step">
+              <h3>Construcción</h3>
+              <p>Trabajamos en ciclos cortos. En cada entrega ves avances funcionando.</p>
+            </li>
+            <li class="step">
+              <h3>Producción y soporte</h3>
+              <p>Publicamos, monitoreamos y acompañamos el producto después del lanzamiento.</p>
+            </li>
+          </ol>
+
+          <div class="stack">
+            <h2>Tecnologías</h2>
+            <ul>
+              <li>TypeScript</li>
+              <li>Node.js</li>
+              <li>NestJS</li>
+              <li>Fastify</li>
+              <li>PostgreSQL</li>
+              <li>Redis</li>
+              <li>Docker</li>
+              <li>DigitalOcean</li>
+              <li>GitHub Actions</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contacto" aria-labelledby="contacto-title">
+        <div class="wrap">
+          <h2 id="contacto-title">¿Tienes un proyecto en mente?</h2>
+          <p>Cuéntanos qué quieres construir y te respondemos con los siguientes pasos.</p>
+          <a
+            class="mail"
+            href="mailto:asespinosa0@gmail.com?subject=Proyecto%20con%20Waypoint%20Studio"
+            >asespinosa0@gmail.com</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>Waypoint Studio, Colombia</span>
+        <span>© 2026</span>
+      </div>
+    </footer>
+  </body>
+</html>
