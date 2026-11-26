@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Te amo, mi niña preciosa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;1,400&display=swap">
+<style>
+/* VOICE: tender, quiet, one lovely object on one screen
+   IDEA: a hand-painted love card with a small bouquet
+   PICTURE: three blooming flowers drawn in SVG, petals drifting down
+   COLOUR and TYPE: blush ground, deep wine ink, rose and soft gold; Pinyon Script + Cormorant Garamond
+   LAYOUT: centered card, bouquet above the words, full-screen petals behind */
+:root{color-scheme:light;--bg:#f7d9df;--bg2:#fbe9ec;--ink:#5e1229;--soft:#8a3a52;--rose:#d9476d;--rose2:#f08aa3;--gold:#c99a4b;--leaf:#5f8f6b}
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%}
+body{margin:0;background:radial-gradient(ellipse 90% 70% at 50% 35%,var(--bg2),var(--bg) 70%);color:var(--ink);font:18px/1.55 'Cormorant Garamond',Georgia,serif;overflow:hidden;-webkit-tap-highlight-color:transparent;cursor:pointer;user-select:none}
+.stage{position:relative;z-index:2;min-height:100%;display:grid;place-items:center;padding:clamp(20px,5vw,56px)}
+.card{width:min(100%,560px);text-align:center;padding:clamp(28px,6vw,52px) clamp(20px,5vw,48px) clamp(32px,6vw,56px);background:rgba(255,248,249,.72);border:1px solid rgba(201,154,75,.55);border-radius:28px;box-shadow:0 30px 80px -30px rgba(94,18,41,.35),inset 0 0 0 8px rgba(255,255,255,.35);backdrop-filter:blur(3px)}
+.bouquet{width:min(78%,300px);height:auto;display:block;margin:0 auto 6px;overflow:visible}
+h1{margin:0;font-family:'Pinyon Script',cursive;font-weight:400;font-size:clamp(46px,11vw,76px);line-height:1.05;color:var(--ink);text-wrap:balance}
+h1 span{display:block}
+.line{margin:18px auto 0;max-width:30ch;font-style:italic;font-size:clamp(19px,4.4vw,23px);color:var(--soft)}
+.divider{display:block;width:120px;height:14px;margin:22px auto 0}
+.hint{position:fixed;z-index:3;left:0;right:0;bottom:max(16px,env(safe-area-inset-bottom));text-align:center;font-size:15px;color:var(--soft);opacity:.85}
+.petals{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.petal{position:absolute;top:-30px;width:14px;height:11px;border-radius:70% 10% 70% 10%;background:linear-gradient(135deg,var(--rose2),var(--rose));opacity:.75;animation:fall linear forwards}
+.heart{position:fixed;z-index:4;pointer-events:none;width:26px;height:26px;margin:-13px 0 0 -13px;animation:rise 1.4s ease-out forwards}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(var(--r))}}
+@keyframes rise{0%{transform:translate(0,0) scale(.4);opacity:0}15%{opacity:1}100%{transform:translate(var(--dx),-140px) scale(1.15) rotate(var(--r));opacity:0}}
+.bloom{transform-box:fill-box;transform-origin:50% 50%;animation:bloom 1.6s cubic-bezier(.2,.9,.3,1.2) both}
+.b2{animation-delay:.35s}.b3{animation-delay:.6s}
+@keyframes bloom{from{transform:scale(.15) rotate(-40deg);opacity:0}to{transform:none;opacity:1}}
+.reveal{animation:show 1.4s ease .9s both}
+@keyframes show{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.bloom,.reveal{animation:none}}
+</style>
+</head>
+<body>
+<div class="petals" id="petals" aria-hidden="true"></div>
+<main class="stage">
+  <div class="card">
+    <svg class="bouquet" viewBox="0 0 300 250" role="img" aria-label="Un ramo de tres flores rosadas">
+      <defs>
+        <radialGradient id="pa" cx="50%" cy="85%" r="80%"><stop offset="0" stop-color="#b8284f"/><stop offset=".55" stop-color="#e0577b"/><stop offset="1" stop-color="#f7a9bb"/></radialGradient>
+        <radialGradient id="pb" cx="50%" cy="85%" r="80%"><stop offset="0" stop-color="#c9406a"/><stop offset=".6" stop-color="#f08aa3"/><stop offset="1" stop-color="#fcd3dc"/></radialGradient>
+        <radialGradient id="core" cx="45%" cy="40%" r="60%"><stop offset="0" stop-color="#f3d39a"/><stop offset="1" stop-color="#c99a4b"/></radialGradient>
+        <ellipse id="petal" cx="0" cy="-22" rx="13" ry="24"/>
+        <ellipse id="petal-s" cx="0" cy="-15" rx="9" ry="16"/>
+        <g id="flower-a">
+          <g fill="url(#pa)">
+            <use href="#petal" transform="rotate(0)"/><use href="#petal" transform="rotate(45)"/><use href="#petal" transform="rotate(90)"/><use href="#petal" transform="rotate(135)"/>
+            <use href="#petal" transform="rotate(180)"/><use href="#petal" transform="rotate(225)"/><use href="#petal" transform="rotate(270)"/><use href="#petal" transform="rotate(315)"/>
+          </g>
+          <g fill="url(#pb)">
+            <use href="#petal-s" transform="rotate(22)"/><use href="#petal-s" transform="rotate(94)"/><use href="#petal-s" transform="rotate(166)"/><use href="#petal-s" transform="rotate(238)"/><use href="#petal-s" transform="rotate(310)"/>
+          </g>
+          <circle r="8" fill="url(#core)"/>
+        </g>
+        <g id="flower-b">
+          <g fill="url(#pb)">
+            <use href="#petal" transform="rotate(0) scale(.82)"/><use href="#petal" transform="rotate(60) scale(.82)"/><use href="#petal" transform="rotate(120) scale(.82)"/>
+            <use href="#petal" transform="rotate(180) scale(.82)"/><use href="#petal" transform="rotate(240) scale(.82)"/><use href="#petal" transform="rotate(300) scale(.82)"/>
+          </g>
+          <circle r="7" fill="url(#core)"/>
+        </g>
+      </defs>
+      <g fill="none" stroke="#5f8f6b" stroke-width="3.2" stroke-linecap="round">
+        <path d="M150 238 C 148 190, 150 150, 150 112"/>
+        <path d="M148 238 C 132 200, 104 168, 86 140"/>
+        <path d="M152 238 C 170 200, 196 168, 214 140"/>
+      </g>
+      <g fill="#5f8f6b">
+        <path d="M149 190 C 128 182, 116 166, 112 150 C 132 156, 146 170, 149 190 Z" opacity=".9"/>
+        <path d="M151 176 C 172 170, 186 156, 192 140 C 170 144, 156 158, 151 176 Z" opacity=".8"/>
+        <path d="M150 214 C 168 212, 182 202, 190 190 C 170 190, 156 200, 150 214 Z" opacity=".7"/>
+      </g>
+      <g transform="translate(86 136)"><g class="bloom b2"><use href="#flower-b"/></g></g>
+      <g transform="translate(214 136)"><g class="bloom b3"><use href="#flower-b"/></g></g>
+      <g transform="translate(150 96)"><g class="bloom"><use href="#flower-a" transform="scale(1.25)"/></g></g>
+      <path d="M134 226 Q 150 214 166 226 L 160 244 Q 150 238 140 244 Z" fill="#c99a4b" opacity=".9"/>
+    </svg>
+    <h1 class="reveal"><span>Te amo,</span><span>mi niña preciosa</span></h1>
+    <svg class="divider reveal" viewBox="0 0 120 14" aria-hidden="true">
+      <path d="M2 7 H 46 M74 7 H 118" stroke="#c99a4b" stroke-width="1"/>
+      <path d="M60 12 C 52 7, 50 3, 54 2 C 57 1.4, 59 3, 60 4.6 C 61 3, 63 1.4, 66 2 C 70 3, 68 7, 60 12 Z" fill="#d9476d"/>
+    </svg>
+    <p class="line reveal">Eres lo más bonito de mis días.</p>
+  </div>
+</main>
+<p class="hint reveal" aria-hidden="true">Toca la pantalla</p>
+<script>
+{
+  const petals = document.getElementById('petals');
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const rand = (min, max) => min + Math.random() * (max - min);
+
+  const dropPetal = () => {
+    const p = document.createElement('span');
+    p.className = 'petal';
+    const size = rand(0.7, 1.4);
+    p.style.left = `${rand(-5, 100)}vw`;
+    p.style.width = `${14 * size}px`;
+    p.style.height = `${11 * size}px`;
+    p.style.setProperty('--dx', `${rand(-18, 18)}vw`);
+    p.style.setProperty('--r', `${rand(-540, 540)}deg`);
+    p.style.animationDuration = `${rand(7, 13)}s`;
+    petals.appendChild(p);
+    p.addEventListener('animationend', () => p.remove());
+  };
+
+  const heartSvg = (color) =>
+    `<svg viewBox="0 0 24 24" width="26" height="26"><path fill="${color}" d="M12 21s-7.5-4.6-9.6-9.2C.8 8.2 3 4.5 6.6 4.5c2.1 0 3.6 1.2 5.4 3.2 1.8-2 3.3-3.2 5.4-3.2 3.6 0 5.8 3.7 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg>`;
+  const colors = ['#d9476d', '#f08aa3', '#b8284f', '#c99a4b'];
+
+  const burst = (x, y) => {
+    const count = calm ? 1 : 7;
+    for (let i = 0; i < count; i++) {
+      const h = document.createElement('span');
+      h.className = 'heart';
+      h.innerHTML = heartSvg(colors[i % colors.length]);
+      h.style.left = `${x}px`;
+      h.style.top = `${y}px`;
+      h.style.setProperty('--dx', `${rand(-70, 70)}px`);
+      h.style.setProperty('--r', `${rand(-30, 30)}deg`);
+      h.style.animationDelay = `${i * 60}ms`;
+      document.body.appendChild(h);
+      h.addEventListener('animationend', () => h.remove());
+    }
+  };
+
+  document.addEventListener('pointerdown', (e) => burst(e.clientX, e.clientY));
+
+  if (!calm) {
+    for (let i = 0; i < 10; i++) setTimeout(dropPetal, i * 400);
+    setInterval(dropPetal, 650);
+  }
+}
+</script>
+</body>
+</html>
